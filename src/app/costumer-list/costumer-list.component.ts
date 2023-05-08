@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CostumerService } from '../services/costumer.service';
 import { CostumerDTO } from 'models';
+import { CommonModule } from '@angular/common';
 
 
 @Component({

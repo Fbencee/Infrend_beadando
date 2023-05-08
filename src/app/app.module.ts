@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CostumerRegistrationComponent } from './costumer-registration/costumer-registration.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CostumerListComponent } from './costumer-list/costumer-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CostumerRegistrationComponent
+    CostumerRegistrationComponent,
+    CostumerListComponent
   ],
   imports: [
     BrowserModule,
