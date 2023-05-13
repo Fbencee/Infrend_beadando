@@ -1,8 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Order } from "./Order"
+import { CostumerDTO } from '../../../models';
 
 @Entity()
-export class Costumer {
+export class Costumer implements CostumerDTO {
 
     @PrimaryGeneratedColumn()
     id: number;

@@ -15,11 +15,11 @@ export function getRouter() {
     // const orderitemController = new OrderitemController();
     // const ovenController = new OvenController();
 
-    router.get('/costumer', costumerController.getAll);
-    router.get('/costumer/:id', costumerController.getOne);
-    router.post('/costumer/', costumerController.create);
-    router.put('/costumer/', costumerController.update);
-    router.delete('/costumer/:id', costumerController.delete);
+    router.get('/costumers', costumerController.getAll);
+    router.get('/costumers/:id', costumerController.getOne);
+    router.post('/costumers/', costumerController.create);
+    router.put('/costumers/', costumerController.update);
+    router.delete('/costumers/:id', costumerController.delete);
 
     // router.get('/food', foodController.getAll);
     // router.get('/food/:id', foodController.getOne);

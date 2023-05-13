@@ -2,9 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { Order } from "./Order";
 import { Food } from "./Food";
 import { Oven } from "./Oven";
+import { OrderitemDTO } from "../../../models";
 
 @Entity()
-export class Orderitem {
+export class Orderitem implements OrderitemDTO {
 
     @PrimaryGeneratedColumn()
     id: number;

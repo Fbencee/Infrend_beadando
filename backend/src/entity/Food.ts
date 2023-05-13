@@ -1,9 +1,9 @@
-import { Time } from "@angular/common"
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Orderitem } from "./Orderitem";
+import { FoodDTO } from "../../../models";
 
 @Entity()
-export class Food {
+export class Food implements FoodDTO{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -15,7 +15,7 @@ export class Food {
     desc: string;
 
     @Column()
-    preptime: Number;
+    preptime: number;
 
     @Column()
     price: number;

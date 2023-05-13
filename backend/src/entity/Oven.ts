@@ -1,8 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { Orderitem } from "./Orderitem";
+import { OvenDTO } from "../../../models";
 
 @Entity()
-export class Oven {
+export class Oven implements OvenDTO {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -10,6 +11,11 @@ export class Oven {
     @Column()
     name: string;
 
-    @OneToMany(type => Orderitem, orderitem => orderitem.oven)
+    @OneToMany(() => Orderitem, (orderitem) => orderitem.oven)
     orderitems: Orderitem[];
+
+    //lehet nem jo
+    constructor() {
+        this.orderitems = [];
+    }
 }

@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
 import { Costumer } from "./Costumer"
 import { Orderitem } from "./Orderitem";
+import { OrderDTO } from "../../../models";
 
 @Entity()
-export class Order {
+export class Order implements OrderDTO{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -12,7 +13,7 @@ export class Order {
     ordertime: Date;
 
     @Column()
-    totalprice: string;
+    totalprice: number;
 
     @Column()
     comments: string;
@@ -20,10 +21,7 @@ export class Order {
     @Column()
     address: string;
 
-    @Column()
-    phonenumber: string;
-
-    @ManyToOne(type => Costumer, costumer => costumer.orders)
+    @ManyToOne(type => Costumer, costumer => costumer.orders, { eager: true })
     costumer: Costumer;
 
     @OneToMany(type => Orderitem, orderitem => orderitem.order)
