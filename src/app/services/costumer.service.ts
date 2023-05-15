@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Costumer } from 'backend/src/entity/Costumer';
 import { CostumerDTO } from 'models';
 
 @Injectable({

@@ -5,7 +5,7 @@ export interface CostumerDTO {
     email: string;
     address: string;
     phonenumber: string;
-    orders: OrderDTO[]
+    orders: OrderDTO[];
 }
 
 export interface FoodDTO {

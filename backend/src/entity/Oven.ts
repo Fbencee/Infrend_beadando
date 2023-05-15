@@ -14,8 +14,4 @@ export class Oven implements OvenDTO {
     @OneToMany(() => Orderitem, (orderitem) => orderitem.oven)
     orderitems: Orderitem[];
 
-    //lehet nem jo
-    constructor() {
-        this.orderitems = [];
-    }
 }

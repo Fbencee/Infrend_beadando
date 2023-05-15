@@ -7,7 +7,9 @@ import { CostumerRegistrationComponent } from './costumer-registration/costumer-
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CostumerListComponent } from './costumer-list/costumer-list.component';
-// import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
+import { FoodListComponent } from './food-list/food-list.component';
+import { FoodFormComponent } from './food-form/food-form.component';
 
 
 
@@ -15,7 +17,9 @@ import { CostumerListComponent } from './costumer-list/costumer-list.component';
   declarations: [
     AppComponent,
     CostumerRegistrationComponent,
-    CostumerListComponent
+    CostumerListComponent,
+    FoodListComponent,
+    FoodFormComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +27,8 @@ import { CostumerListComponent } from './costumer-list/costumer-list.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
-    // ToastrModule.forRoot()
+    CommonModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

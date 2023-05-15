@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'beadando-app';
 
   constructor(private router: Router) { };
@@ -18,9 +18,9 @@ export class AppComponent {
 
   // ngOnInit(): void {
   //   if (this.isLoggedIn) {
-  //     this.router.navigateByUrl('/patient-list');
+  //     this.router.navigateByUrl('/costumer-list');
   //   } else {
   //     this.router.navigate(['/']);
   //   }
-  }
+}
 

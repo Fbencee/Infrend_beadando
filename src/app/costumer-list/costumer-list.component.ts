@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CostumerService } from '../services/costumer.service';
 import { CostumerDTO } from 'models';
-import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-costumer-list',
   templateUrl: './costumer-list.component.html',
   styleUrls: ['./costumer-list.component.css']
 })
-export class CostumerListComponent {
+export class CostumerListComponent implements OnInit {
   costumers: CostumerDTO[] = [];
 
   constructor(private costumerService: CostumerService) { }
@@ -20,7 +18,7 @@ export class CostumerListComponent {
         this.costumers = costumers;
         console.log(costumers);
       },
-      error: (err) => console.error(err)
+      error: (err) => console.error(err)  
     })
   }
 }
