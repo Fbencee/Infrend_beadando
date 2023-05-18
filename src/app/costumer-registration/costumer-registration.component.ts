@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CostumerService } from '../services/costumer.service';
-import { CostumerDTO } from 'models';
+import { CostumerDTO, OrderDTO } from 'models';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class CostumerRegistrationComponent implements OnInit{
     email: this.formBuilder.control(''),
     address: this.formBuilder.control(''),
     phonenumber: this.formBuilder.control(''),
-    orders: this.formBuilder.array([])
+    orders: this.formBuilder.control<null | OrderDTO[]>(null)
   });
 
   constructor(

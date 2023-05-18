@@ -11,6 +11,9 @@ export class Oven implements OvenDTO {
     @Column()
     name: string;
 
+    @Column()
+    finishtime: Date;
+
     @OneToMany(() => Orderitem, (orderitem) => orderitem.oven)
     orderitems: Orderitem[];
 

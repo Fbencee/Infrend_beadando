@@ -10,6 +10,8 @@ import { CostumerListComponent } from './costumer-list/costumer-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FoodListComponent } from './food-list/food-list.component';
 import { FoodFormComponent } from './food-form/food-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 
 
@@ -19,7 +21,8 @@ import { FoodFormComponent } from './food-form/food-form.component';
     CostumerRegistrationComponent,
     CostumerListComponent,
     FoodListComponent,
-    FoodFormComponent
+    FoodFormComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { FoodFormComponent } from './food-form/food-form.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
   providers: [],

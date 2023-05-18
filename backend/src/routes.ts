@@ -11,9 +11,9 @@ export function getRouter() {
 
     const costumerController = new CostumerController();
     const foodController = new FoodController();
-    // const orderController = new OrderController();
-    // const orderitemController = new OrderitemController();
-    // const ovenController = new OvenController();
+    const orderController = new OrderController();
+    const orderitemController = new OrderitemController();
+    const ovenController = new OvenController();
 
     router.get('/costumers', costumerController.getAll);
     router.get('/costumers/:id', costumerController.getOne);
@@ -27,23 +27,24 @@ export function getRouter() {
     router.put('/foods/', foodController.update);
     router.delete('/foods/:id', foodController.delete);
 
-    // router.get('/orders', orderController.getAll);
-    // router.get('/orders/:id', orderController.getOne);
-    // router.post('/orders/', orderController.create);
-    // router.put('/orders/', orderController.update);
-    // router.delete('/orders/:id', orderController.delete);
+    router.get('/orders', orderController.getAll);
+    router.get('/orders/:id', orderController.getOne);
+    router.post('/orders/', orderController.create);
+    router.put('/orders/', orderController.update);
+    router.delete('/orders/:id', orderController.delete);
 
-    // router.get('/orderitems', orderitemController.getAll);
-    // router.get('/orderitems/:id', orderitemController.getOne);
-    // router.post('/orderitems/', orderitemController.create);
-    // router.put('/orderitems/', orderitemController.update);
-    // router.delete('/orderitems/:id', orderitemController.delete);
+    router.get('/orderitems', orderitemController.getAll);
+    router.get('/orderitems/:id', orderitemController.getOne);
+    router.post('/orderitems/', orderitemController.create);
+    router.put('/orderitems/', orderitemController.update);
+    router.delete('/orderitems/:id', orderitemController.delete);
 
-    // router.get('/ovens', ovenController.getAll);
-    // router.get('/ovens/:id', ovenController.getOne);
-    // router.post('/ovens/', ovenController.create);
-    // router.put('/ovens/', ovenController.update);
-    // router.delete('/ovens/:id', ovenController.delete);
+    router.get('/ovens', ovenController.getAll);
+    router.get('/ovens/:id', ovenController.getOne);
+    router.post('/ovens/', ovenController.create);
+    router.put('/ovens/', ovenController.update);
+    router.delete('/ovens/:id', ovenController.delete);
+    router.get('/lowestfinishoven', ovenController.getLowestFinishTime);
 
     return router;
 }

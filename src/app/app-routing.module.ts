@@ -4,12 +4,14 @@ import { CostumerRegistrationComponent } from './costumer-registration/costumer-
 import { CostumerListComponent } from './costumer-list/costumer-list.component';
 import { FoodListComponent } from './food-list/food-list.component';
 import { FoodFormComponent } from './food-form/food-form.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 const routes: Routes = [
   { path: 'costumer-registration', component: CostumerRegistrationComponent },
   { path: 'costumer-list', component: CostumerListComponent },
   { path: 'food-list', component: FoodListComponent },
   { path: 'food-form', component: FoodFormComponent },
+  { path: 'order-form', component: OrderFormComponent },
 ];
 
 @NgModule({

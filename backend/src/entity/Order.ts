@@ -18,12 +18,9 @@ export class Order implements OrderDTO{
     @Column()
     comments: string;
 
-    @Column()
-    address: string;
-
     @ManyToOne(type => Costumer, costumer => costumer.orders, { eager: true })
     costumer: Costumer;
 
-    @OneToMany(type => Orderitem, orderitem => orderitem.order)
+    @OneToMany(type => Orderitem, orderitem => orderitem.order, { eager: true })
     orderitems: Orderitem[];
 }

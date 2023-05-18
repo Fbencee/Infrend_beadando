@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CostumerService } from '../services/costumer.service';
 import { CostumerDTO } from 'models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-costumer-list',
@@ -10,7 +11,9 @@ import { CostumerDTO } from 'models';
 export class CostumerListComponent implements OnInit {
   costumers: CostumerDTO[] = [];
 
-  constructor(private costumerService: CostumerService) { }
+  constructor(
+    private costumerService: CostumerService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.costumerService.getAll().subscribe({
@@ -20,5 +23,10 @@ export class CostumerListComponent implements OnInit {
       },
       error: (err) => console.error(err)  
     })
+  }
+
+  navigateToFoods(costumer: CostumerDTO){
+    const queryParams = { dto: JSON.stringify(costumer) };
+    this.router.navigate(['/food-list'], { queryParams });
   }
 }

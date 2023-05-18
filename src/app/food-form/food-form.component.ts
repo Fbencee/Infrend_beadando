@@ -22,7 +22,7 @@ export class FoodFormComponent {
     preptime: this.formBuilder.control(0),
     price: this.formBuilder.control(0)
   });
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private foodService: FoodService,
@@ -39,32 +39,39 @@ export class FoodFormComponent {
         next: (food) => this.foodForm.setValue(food),
         error: (err) => {
           console.error(err);
-          this.toastrService.error('A termékadatok betöltése sikertelen', 'Hiba');
+          this.toastrService.error('A ételek betöltése sikertelen', 'Hiba');
         }
       });
     }
-
-    this.foodService.getAll().subscribe({
-      next: (foods) => this.foods = foods,
-      error: (err) => {
-        console.error(err);
-        this.toastrService.error('A felhasználók betöltése sikertelen', 'Hiba');
-      }
-    })
   }
 
 
 
-    saveFood() {
-      const food = this.foodForm.value as FoodDTO;
-  
+  saveFood() {
+    const food = this.foodForm.value as FoodDTO;
+
+    if (this.isNewFood) {
       this.foodService.create(food).subscribe({
         next: (food) => {
-          this.toastrService.success('A vásárló sikeresen hozzáadva, id:' + food.id, 'Siker');
+          this.toastrService.success('Az étel sikeresen hozzáadva, id:' + food.id, 'Siker');
         },
         error: (err) => {
-          this.toastrService.error('A vásárló hozzáadása nem sikerült.', 'Hiba');
+          console.log(err);
+          this.toastrService.error('Az étel hozzáadása nem sikerült.', 'Hiba');
         }
       });
     }
+    else {
+      this.foodService.update(food).subscribe({
+        next: (food) => {
+          this.toastrService.success('Termék sikeresen szerkesztve.' , 'Siker');
+        },
+        error: (err) => { 
+          console.log(err);
+          this.toastrService.error('A termék szerkesztése nem sikerült.', 'Hiba');
+        }
+      });
+
+    }
+  }
 }

@@ -5,7 +5,7 @@ export interface CostumerDTO {
     email: string;
     address: string;
     phonenumber: string;
-    orders: OrderDTO[];
+    orders: null | OrderDTO[];
 }
 
 export interface FoodDTO {
@@ -14,7 +14,7 @@ export interface FoodDTO {
     desc: string;
     preptime: number;
     price: number;
-    orderitems: OrderitemDTO[];
+    orderitems: null | OrderitemDTO[];
 }
 
 export interface OrderDTO {
@@ -22,22 +22,22 @@ export interface OrderDTO {
     ordertime: Date;
     totalprice: number;
     comments: string;
-    address: string;
-    costumer: CostumerDTO;
-    orderitems: OrderitemDTO[];
+    costumer: null | CostumerDTO;
+    orderitems: null | OrderitemDTO[];
 }
 
 export interface OrderitemDTO {
     id: number;
     starttime: Date;
     endtime: Date;
-    order: OrderDTO;
-    food: FoodDTO;
-    oven: OvenDTO;
+    order: null | OrderDTO;
+    food: null | FoodDTO;
+    oven: null | OvenDTO;
 }
 
 export interface OvenDTO {
     id: number;
     name: string;
-    orderitems: OrderitemDTO[];
+    finishtime: Date;
+    orderitems: null | OrderitemDTO[];
 }
