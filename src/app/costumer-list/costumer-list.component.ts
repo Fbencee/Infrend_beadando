@@ -16,13 +16,13 @@ export class CostumerListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.costumerService.getAll().subscribe({
-      next: (costumers) => {
-        this.costumers = costumers;
-        console.log(costumers);
-      },
-      error: (err) => console.error(err)  
-    })
+      this.costumerService.getAll().subscribe({
+        next: (costumers) => {
+          this.costumers = costumers;
+          console.log(costumers);
+        },
+        error: (err) => console.error(err)  
+      })
   }
 
   navigateToFoods(costumer: CostumerDTO){

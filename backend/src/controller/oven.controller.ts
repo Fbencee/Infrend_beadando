@@ -10,7 +10,8 @@ export class OvenController extends Controller{
             const oven = await this.repository
                 .createQueryBuilder('oven')
                 .orderBy('oven.finishtime','ASC')
-                .limit(1);
+                .limit(1)
+                .getOne();
                 console.log(oven);
             res.json(oven);
         } catch (err) {

@@ -12,6 +12,7 @@ import { FoodListComponent } from './food-list/food-list.component';
 import { FoodFormComponent } from './food-form/food-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { OvenListComponent } from './oven-list/oven-list.component';
 
 
 
@@ -22,7 +23,8 @@ import { OrderFormComponent } from './order-form/order-form.component';
     CostumerListComponent,
     FoodListComponent,
     FoodFormComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    OvenListComponent
   ],
   imports: [
     BrowserModule,
