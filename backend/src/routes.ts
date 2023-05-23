@@ -38,6 +38,7 @@ export function getRouter() {
     router.post('/orderitems/', orderitemController.create);
     router.put('/orderitems/', orderitemController.update);
     router.delete('/orderitems/:id', orderitemController.delete);
+    router.get('/orderitemsbyorder', orderitemController.getOrderitemsByOrder);
 
     router.get('/ovens', ovenController.getAll);
     router.get('/ovens/:id', ovenController.getOne);

@@ -5,8 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderitemService } from '../services/orderitem.service';
 import { OrderitemDTO } from 'models';
-import { NgTemplateOutlet } from '@angular/common';
 import { OvenService } from '../services/oven.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-food-list',
@@ -42,7 +42,8 @@ export class FoodListComponent implements OnInit {
     private ovenService: OvenService,
     private toastrService: ToastrService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private orderService: OrderService) { }
 
   ngOnInit(): void {
 
@@ -50,7 +51,6 @@ export class FoodListComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.costumer = JSON.parse(params['dto']);
       this.order.costumer = this.costumer;
-      console.log('DTO object:', this.costumer);
     });
 
     this.foodService.getAll().subscribe({
@@ -60,41 +60,51 @@ export class FoodListComponent implements OnInit {
       },
       error: (err) => console.error(err)
     });
+
+    this.orderService.create(this.order).subscribe({
+      next: (order) => {
+        this.toastrService.success('A rendelés sikeresen hozzáadva, id:' + order.id, 'Siker');
+        this.order.id = order.id;
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastrService.error('A rendelés hozzáadása nem sikerült.', 'Hiba');
+      }
+    })
   }
 
   addFoodToCart(food: FoodDTO) {
     let startTime: Date = this.getStartTime();
-    let endTime: Date = new Date();
+    let endTime: Date = startTime;
     endTime.setTime(endTime.getMinutes() + food.preptime);
     this.totalprice += food.price;
+
+    let updateOven:OvenDTO = {
+      id:0,
+      name:'',
+      finishtime: new Date()
+    }
+
+    this.ovenService.getLowestFinishTime().subscribe({
+      next: (oven) => {
+        updateOven.id = oven.id;
+        updateOven.finishtime = oven.finishtime;
+        updateOven.name = oven.name;
+      },
+      error: (err) => console.error(err)
+    })
 
     let orderitem: OrderitemDTO = {
       id: 0,
       starttime: startTime,
       endtime: endTime,
-      order: {id: this.order.id} as OrderDTO,
-      food: {id: food.id} as FoodDTO,
-      oven: null
+      order: this.order,
+      food: food
     }
-    
-    let updateOven:OvenDTO = {
-      id:0,
-      name:'',
-      finishtime: new Date(),
-      orderitems: null
-    }
-
-    this.ovenService.getLowestFinishTime().subscribe({
-      next: (oven) => {
-        updateOven = oven;
-        console.log(orderitem.oven);
-      },
-      error: (err) => console.error(err)
-    })
 
     updateOven.finishtime=orderitem.endtime;
-    orderitem.oven = {id:updateOven.id} as OvenDTO;
-    console.log(orderitem);
+    console.log(updateOven);
+
 
     this.orderitemService.create(orderitem).subscribe({
       next: (orderitem) => {
@@ -111,6 +121,7 @@ export class FoodListComponent implements OnInit {
     this.ovenService.update(updateOven).subscribe({
       next: (oven) => {
         this.toastrService.success('A sütő sikeresen szerkesztve, id:' + oven.id, 'Siker');
+        console.log(oven);
       },
       error: (err) => {
         console.log(err);
@@ -125,8 +136,7 @@ export class FoodListComponent implements OnInit {
     let lowestFinishTimeOven: OvenDTO = {
       id: 0,
       name: '',
-      finishtime: new Date(),
-      orderitems: null
+      finishtime: new Date()
     };
 
     this.ovenService.getLowestFinishTime().subscribe({
@@ -146,19 +156,7 @@ export class FoodListComponent implements OnInit {
   }
 
   createOrder() {
-
-    let order: OrderDTO = {
-      id: 0,
-      ordertime: new Date(),
-      totalprice: this.reducePrice(this.totalprice),
-      comments: '',
-      costumer: this.costumer,
-      orderitems: this.orderitems
-    }
-
-    console.log(order);
-
-    this.navigateToConfirm(order);
+    this.navigateToConfirm(this.order);
   }
 
   navigateToConfirm(order: OrderDTO) {

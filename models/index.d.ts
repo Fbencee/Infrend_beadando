@@ -32,12 +32,10 @@ export interface OrderitemDTO {
     endtime: Date;
     order: null | OrderDTO;
     food: null | FoodDTO;
-    oven: null | OvenDTO;
 }
 
 export interface OvenDTO {
     id: number;
     name: string;
     finishtime: Date;
-    orderitems: null | OrderitemDTO[];
 }

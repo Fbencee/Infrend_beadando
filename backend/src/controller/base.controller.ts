@@ -56,14 +56,15 @@ export abstract class Controller {
     }
 
     update = async (req, res) => {
-        const entity = this.repository.create(req.body);
-        entity.id = req.params.id;
-
         try {
-            const entityAdded = await this.repository.save(entity);
-            res.json(entityAdded);
+            const entity = this.repository.create(req.body as object);
+            const entityToUpdate = await this.repository.findOneBy({ id: entity.id });
+
+            const result = await this.repository.save(entity);
+            res.json(result);
         } catch (err) {
             res.status(500).json({ message: err.message });
         }
     }
+
 }

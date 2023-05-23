@@ -4,8 +4,8 @@
         <form>
             <div class="mb-3">
                 <label for="ordertime">Order Time</label>
-                <input type="text" class="form-control" id="ordertime" name="ordertime" [(ngModel)]="order.ordertime.getTime"
-                    required>
+                <input type="text" class="form-control" id="ordertime" name="ordertime" value="{{order.ordertime}}"
+                    readonly>
             </div>
             <div class="mb-3">
                 <label for="totalprice">Total Price</label>
@@ -24,14 +24,14 @@
             </div>
             <div class="mb-3">
                 <label for="deliverytime">Delivery time</label>
-                <input type="text" class="form-control" id="deliverytime" name="deliverytime" [(ngModel)]="costumerName"
+                <input type="text" class="form-control" id="deliverytime" name="deliverytime" [(ngModel)]="deliveryTime"
                     required>
             </div>
             <div class="mb-3">
                 <label for="Foods">Foods</label>
-                <div *ngFor="let food of foods">
-                    <label class="col-md-2">{{ food.name }}</label>
-                    <label class="col-md-2">{{food.price}}</label>
+                <div *ngFor="let orderitem of orderitems">
+                    <label class="col-md-2">{{ orderitem.id }}</label>
+                    <!-- <label class="col-md-2">{{food.price}}</label> -->
                 </div>
 
             </div>

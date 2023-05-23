@@ -22,6 +22,4 @@ export class Orderitem implements OrderitemDTO {
     @ManyToOne(type => Food, food => food.orderitems)
     food: Food;
 
-    @ManyToOne(type => Oven, food => food.orderitems)
-    oven: Oven;
 }

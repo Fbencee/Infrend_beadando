@@ -28,4 +28,10 @@ export class OrderitemService {
   delete(id: number) {
     return this.http.delete('/api/orderitems/' + id);
   }
+
+  getOrderItemsByOrder(id: number) {
+    return this.http.get<OrderitemDTO[]>('/api/orderitemsbyorder', {
+      params: { id }
+    });
+  }
 }
