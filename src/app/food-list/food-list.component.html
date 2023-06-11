@@ -2,13 +2,12 @@
     <div class="row">
         <div class="col-md-6" *ngFor="let food of foods">
             <h5>
-                {{ food.name }}
-                <span class="badge text-bg-success">{{ food.price }} Ft</span>
+                {{food.name}}
+                <span class="badge text-bg-success"> {{food.price}} Ft</span>
             </h5>
             <div class="row">
                 <div class="col-md-2">
-                    <button class="btn btn-sm btn-outline-primary"
-                        (click)="addFoodToCart(food)">Add</button>
+                    <button class="btn btn-sm btn-outline-primary">Add</button>
                 </div>
             </div>
             <div class="row">
@@ -16,14 +15,13 @@
                 <img [src]="food.imgUrl" class="product-img"/>
             </div> -->
                 <div class="col-md-12">
-                    {{ food.desc | slice:0:240 }}
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="d-grid gap-2 col-2 mx-auto">
-            <button class="btn btn-sm btn-outline-primary" (click)="createOrder()" >Create Orderitem</button>
+            <button class="btn btn-sm btn-outline-primary" >Create Orderitem</button>
         </div>
     </div>
 </div>

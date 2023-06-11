@@ -12,15 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private router: Router) { };
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/costumer-list');
+    this.router.navigateByUrl('/food-list');
   }
-
-
-  // ngOnInit(): void {
-  //   if (this.isLoggedIn) {
-  //     this.router.navigateByUrl('/costumer-list');
-  //   } else {
-  //     this.router.navigate(['/']);
-  //   }
 }
 

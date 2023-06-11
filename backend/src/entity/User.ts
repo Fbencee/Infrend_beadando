@@ -1,18 +1,16 @@
-    import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { UserDTO } from "../../../models";
 
 @Entity()
-export class User {
+export class User implements UserDTO{
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    firstName: string;
+    username: string;
 
     @Column()
-    lastName: string;
-
-    @Column()
-    age: number;
+    password: string;
 
 }

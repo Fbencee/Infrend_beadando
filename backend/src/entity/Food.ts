@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import { Orderitem } from "./Orderitem";
+import { Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 import { FoodDTO } from "../../../models";
 
 @Entity()
@@ -19,7 +18,4 @@ export class Food implements FoodDTO{
 
     @Column()
     price: number;
-
-    @OneToMany(type => Orderitem, orderitem => orderitem.food)
-    orderitems: Orderitem[];
 }
